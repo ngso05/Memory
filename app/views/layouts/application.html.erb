@@ -11,10 +11,10 @@
 
   <body>
     <header>
-      <%= link_to root_path, class:"header-title" do %>
+      <%= link_to root_path do %>
       <div class="heading">Memory</div>
       <% end %>
-      <ul class="nav-list">
+      <ul class="nav-list" style="list-style: none;">
         <li class="nav-list-item">
           <%= link_to "ログアウト", logout_path, method: :delete %>
         </li>
