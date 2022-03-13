@@ -11,12 +11,16 @@
 
   <body>
     <header>
-      <%= link_to root_path do %>
+      <%= link_to root_path, class:"header-title" do %>
       <div class="heading">Memory</div>
       <% end %>
-      <ul class="nav-list" style="list-style: none;">
+      <ul class="nav-list">
+        <% if user_signed_in? %>
         <li class="nav-list-item">
-          <%= link_to "ログアウト", logout_path, method: :delete %>
+          <%#= link_to 'マイページ', user_path(current_user.id) %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         </li>
         <li class="nav-list-item">
           <%= link_to 'メモ一覧', memos_path %>
@@ -24,12 +28,17 @@
         <li class="nav-list-item">
           <%= link_to 'メモを作成する', new_memo_path %>
         </li>
+        <% else %>
         <li class="nav-list-item">
-          <%= link_to "ログイン", login_path %>
+          <%= link_to "新規登録", new_user_registration_path %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "ログイン", new_user_session_path %>
         </li>
         <li class="nav-list-item">
           <%= link_to 'メモ一覧', memos_path %>
         </li>
+        <% end %>
       </ul>
     </header>
     <%= yield %>
