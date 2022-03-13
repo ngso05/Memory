@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="memo-detail-box col-lg-12 col-md-12 col-12">
+      <div>
+        <p>タイトル:       <%= @memo.title %></p>
+      </div>
+      <div>
+        <p>メモ:       <%= @memo.body %></p>
+      </div>
+      <div>
+        <% @memo_tags.each do |tag| %>
+        <%=tag.name%><%="(#{tag.memos.count})" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 class MemosController < ApplicationController
   def index
-    @tag_list = Tag.all              #ビューでタグ一覧を表示するために全取得。
-    @memos = Memo.all                #ビューで投稿一覧を表示するために全取得。
-    # @memo = current_user.memos.new
+    @tag_list = Tag.all
+    @memos = Memo.page(params[:page]).per(5)
+    @memo = current_user.memos.new
   end
 
   def new
@@ -11,26 +11,36 @@ class MemosController < ApplicationController
 
   def create
     @memo = Memo.new(memo_params)
-    @memo.user_id = current_user.id
-    tag_list = tag_params[:names].split(/[[:blank:]]+/).select(&:present?)
-    memo.save
+    @memo.user_id=current_user.id
+    # 受け取った値を,で区切って配列にする
+    tag_list=params[:memo][:name].split(',')
     if @memo.save
       @memo.save_tag(tag_list)
-      redirect_to memos_path
+      redirect_to memos_path(@memo),notice:'投稿完了しました:)'
     else
-      render 'new'
+      render:new
     end
   end
 
   def show
-    @memo = Memo.find(params[:id])  #クリックした投稿を取得。
+    @memo = Memo.find(params[:id])
     @memo_tags = @memo.tags
   end
 
   def edit
+    @memo = Memo.find(params[:id])
+    @tag_list=@memo.tags.pluck(:name).join(',')
   end
 
   def update
+    @memo = Memo.find(params[:id])
+    tag_list=params[:memo][:name].split(',')
+    if @memo.update(memo_params)
+       @memo.save_tag(tag_list)
+       redirect_to memo_path(@memo.id),notice:'投稿完了しました:)'
+    else
+      render:edit
+    end
   end
 
   def destroy
@@ -39,8 +49,8 @@ class MemosController < ApplicationController
   def memo_params
     params.require(:memo).permit(:title, :body)
   end
-  
+
   def tag_params
-      params.require(:memo).permit(:names)
+      params.require(:memo).permit(:name)
   end
 end

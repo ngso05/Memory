@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="user-destroy col-lg-12 col-md-12 col-12">
+      <h2><strong>本当に退会しますか？</strong></h2>
+      <div class="destroy-button">
+        <%= link_to "退会しない", user_path(current_user), class: "glyphicon glyphicon-home btn btn-primary" %>
+        <%= link_to "退会する", withdraw_users_path, method: :PATCH, data: {confirm: "本当に退会してもよろしいですか？"}, class: "glyphicon glyphicon-tint btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>
