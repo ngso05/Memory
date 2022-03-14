@@ -16,8 +16,9 @@ class MemosController < ApplicationController
     tag_list=params[:memo][:name].split(',')
     if @memo.save
       @memo.save_tag(tag_list)
-      redirect_to memos_path(@memo),notice:'投稿完了しました:)'
+      redirect_to memos_path(@memo), notice: 'メモを作成しました'
     else
+      flash.now[:alert] = 'メモの作成に失敗しました'
       render:new
     end
   end

@@ -1,7 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="memo-new-box col-lg-9 col-md-9 col-9">
+      <p id="notice"><%= notice %></p>
+      <%= flash[:alert] %>
       <h2>メモを作成する</h2>
+      <% if @memo.errors.any? %>
+      <%= @memo.errors.count %>件のエラーが発生しました
+      <% @memo.errors.full_messages.each do |message| %>
+      <%= message %>
+      <% end %>
+      <% end %>
       <%= form_with model: @memo, url: memos_path, local: true do |f| %>
       <p class="new-box">タイトル</p>
       <%= f.text_field :title,  size: 40  %>

@@ -12,8 +12,8 @@
           <% @memos.each do |memoall| %>
         <div class="main-content-list">
           <%= link_to memo_path(memoall.id) do %>
-          <p>タイトル　　<%= memoall.title %></p>
-          <p>メモ　　<%= memoall.body %></p>
+          <p><strong>タイトル</strong>　　<%= memoall.title %></p>
+          <p><strong>メモ</strong>　　<%= memoall.body %></p>
           <% end %>
         </div>
          <% end %>
