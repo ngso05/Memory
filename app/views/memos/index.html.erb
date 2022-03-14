@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="main-content col-lg-9 col-md-9 col-9">
-      <h2>Tags</h2>
+      <h2>タグ</h2>
         <% @tag_list.each do |list|%>
         <%=list.name %>
         <%="(#{list.memos.count})" %>
         <% end %>
         <h2>メモ一覧</h2>
-        メモ<%= current_user.memos.where('created_at > ?', Date.today).count %>件
+        メモ<%= current_user.memos.where('created_at > ?', Date.new).count %>件
         <div>
           <% @memos.each do |memoall| %>
-        <div>
+        <div class="main-content-list">
           <%= link_to memo_path(memoall.id) do %>
           <p>タイトル　　<%= memoall.title %></p>
           <p>メモ　　<%= memoall.body %></p>

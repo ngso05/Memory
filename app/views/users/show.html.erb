@@ -7,7 +7,7 @@
       </div>
       <div>
         <% if @user.id == current_user.id %>
-        <p><%= link_to "編集する", edit_user_path(@user), class: "glyphicon glyphicon-pencil btn btn-success pull-right" %></p>
+        <p><%= link_to "編集する", edit_user_path(@user), class: "glyphicon glyphicon-pencil btn btn-primary pull-right" %></p>
         <% end %>
       </div>
     </div>

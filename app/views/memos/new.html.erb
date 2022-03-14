@@ -4,13 +4,13 @@
       <h2>メモを作成する</h2>
       <%= form_with model: @memo, url: memos_path, local: true do |f| %>
       <p class="new-box">タイトル</p>
-      <%= f.text_field :title %>
+      <%= f.text_field :title,  size: 40  %>
       <p class="new-box">メモ</p>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, cols: 40 %>
       <p class="new-box">タグ</p>
-      <%= f.text_field :name %>
+      <%= f.text_field :name,  size: 40  %>
       <div>
-        <%= f.submit '投稿' %>
+        <%= f.submit '登録', class: 'input-btn' %>
       </div>
       <% end %>
     </div>

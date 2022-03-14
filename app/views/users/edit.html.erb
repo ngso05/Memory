@@ -12,10 +12,8 @@
           <%= f.email_field :email, autofocus: true, id:"inputEmail", placeholder:"メールアドレス"%>
         </div>
         <div>
-          <%= f.submit "変更を保存", class: "glyphicon glyphicon-pencil btn btn-success pull-right" %>
+          <%= f.submit "変更を保存", class: "glyphicon glyphicon-pencil btn btn-info pull-right" %>
           <% end %>
-        </div>
-        <div class="edit-box">
           <%= link_to "退会する", unsubscribe_users_path, class: "glyphicon glyphicon-tint btn btn-danger"%>
         </div>
     </div>
