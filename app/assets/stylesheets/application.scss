@@ -43,7 +43,7 @@ a:active { color: #ff8000; }
 }
 
 #sidebar {
-    font-size: 15px;
+    font-size: 18px;
     padding-top: 120px;
     width: 260px;
     height: 100%;
@@ -206,7 +206,7 @@ a:active { color: #ff8000; }
 }
 
 .main-content {
-  margin: 20px auto;
+  margin: 40px auto;
   width: 100%;
   text-decoration: none;
   padding: 0.5rem;
@@ -215,6 +215,18 @@ a:active { color: #ff8000; }
   color: #58ad5a;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
   border-left-color: #7e5bfc;
+  color: #7e5bfc;
+}
+
+.tag-list {
+  font-size: 20px;
+  margin: 20px auto;
+  color: #7e5bfc;
+}
+
+.memo-count {
+  font-size: 20px;
+  margin: 20px auto;
   color: #7e5bfc;
 }
 
@@ -222,10 +234,12 @@ a:active { color: #ff8000; }
 　list-style-type : none;
   padding:5px 10px;
   border-bottom:1px solid #483D8B;
+  font-size: 18px;
+  margin: 10px auto;
 }
 
 .memo-detail-box {
-  margin: 20px auto;
+  margin: 40px auto;
   width: 100%;
   text-decoration: none;
   padding: 0.5rem;
@@ -237,8 +251,13 @@ a:active { color: #ff8000; }
   color: #7e5bfc;
 }
 
-.memo-new-box {
-  margin: 20px auto;
+.memo-detail-list {
+  font-size: 18px;
+  margin: 10px auto;
+}
+
+.memo-detail-update-box {
+  margin: 40px auto;
   width: 100%;
   text-decoration: none;
   padding: 0.5rem;
@@ -246,10 +265,33 @@ a:active { color: #ff8000; }
   border-left: solid 6px #58ad5a;
   color: #58ad5a;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+  border-left-color: #7e5bfc;
+  color: #7e5bfc;
+}
+
+.memo-detail-update-list {
+  font-size: 20px;
+  margin: 30px auto;
+}
+
+.memo-new-box {
+  margin: 40px auto;
+  width: 100%;
+  text-decoration: none;
+  padding: 0.5rem;
+  background: #f7f7f7;
+  border-left: solid 6px #58ad5a;
+  color: #58ad5a;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.new-box-list {
+  font-size: 20px;
+  margin: 30px auto;
 }
 
 .profile {
-  margin: 20px auto;
+  margin: 40px auto;
   width: 100%;
   text-decoration: none;
   padding: 0.5rem;
@@ -261,8 +303,13 @@ a:active { color: #ff8000; }
   color: #5bb1fc;
 }
 
+.user-name {
+  font-size: 20px;
+  margin: 30px auto;
+}
+
 .profile-update {
-  margin: 20px auto;
+  margin: 40px auto;
   width: 100%;
   text-decoration: none;
   padding: 0.5rem;
@@ -272,6 +319,11 @@ a:active { color: #ff8000; }
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
   border-left-color: #5bb1fc;
   color: #5bb1fc;
+}
+
+.update-user-item {
+  font-size: 20px;
+  margin: 30px auto;
 }
 
 .user-destroy {

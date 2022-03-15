@@ -6,23 +6,18 @@ class Memo < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 
-  def save_tag(sent_tags)
-  # タグが存在していれば、タグの名前を配列として全て取得
+  def save_memos(tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
-    # 現在取得したタグから送られてきたタグを除いてoldtagとする
-    old_tags = current_tags - sent_tags
-    # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
-    new_tags = sent_tags - current_tags
+    old_tags = current_tags - tags
+    new_tags = tags - current_tags
 
-    # 古いタグを消す
-    old_tags.each do |old|
-      self.tags.delete　Tag.find_by(name: old)
+    old_tags.each do |old_name|
+      self.tags.delete Tag.find_by(name: old_name)
     end
 
-    # 新しいタグを保存
-    new_tags.each do |new|
-      new_memo_tag = Tag.find_or_create_by(name: new)
-      self.tags << new_memo_tag
-   end
+    new_tags.each do |new_name|
+      memo_tag = Tag.find_or_create_by(name: new_name)
+      self.tags << memo_tag
+    end
   end
 end

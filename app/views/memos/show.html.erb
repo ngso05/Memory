@@ -1,17 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="memo-detail-box col-lg-9 col-md-9 col-9">
-      <div>
-        <p><strong>タイトル</strong>       <%= @memo.title %></p>
+      <div class="memo-detail-list">
+        <p><strong>タイトル:</strong>          <%= @memo.title %></p>
       </div>
-      <div>
-        <p><strong>メモ</strong>        <%= @memo.body %></p>
+      <div class="memo-detail-list">
+        <p><strong>メモ:</strong><%= @memo.body %></p>
       </div>
-      <div>
+      <div class="memo-detail-list">
+        <p><strong>タグ:</strong>
         <% @memo_tags.each do |tag| %>
-        <%=tag.name%><%="(#{tag.memos.count})" %>
+        <%= tag.name %>
         <% end %>
+        </p>
       </div>
+      <div class="memo-detail-list">
+        <%= @memo.created_at %>
+      </div>
+      <% if @memo.user == current_user %>
+      <div class="memo-detail-item">
+        <%= link_to "編集する", edit_memo_path(@memo), class: "glyphicon glyphicon-pencil btn btn-primary pull-right" %>
+        <%= link_to "削除する", memo_path(@memo), method: :delete, data: {confirm: "削除しますか？"}, class: "glyphicon glyphicon-tint btn btn-danger" %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>

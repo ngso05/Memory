@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="memo-new-box col-lg-9 col-md-9 col-9">
-      <p id="notice"><%= notice %></p>
       <%= flash[:alert] %>
       <h2>メモを作成する</h2>
       <% if @memo.errors.any? %>
@@ -11,12 +10,18 @@
       <% end %>
       <% end %>
       <%= form_with model: @memo, url: memos_path, local: true do |f| %>
-      <p class="new-box">タイトル</p>
-      <%= f.text_field :title,  size: 40  %>
-      <p class="new-box">メモ</p>
-      <%= f.text_area :body, cols: 40 %>
-      <p class="new-box">タグ</p>
-      <%= f.text_field :name,  size: 40  %>
+      <div class="new-box-list">
+        <p>タイトル</p>
+        <%= f.text_field :title,  size: 40  %>
+      </div>
+      <div class="new-box-list">
+        <p>メモ</p>
+        <%= f.text_area :body, cols: 40 %>
+      </div>
+      <div class="new-box-list">
+        <p>タグ</p>
+        <%= f.text_field :name,  size: 40  %>
+      </div>
       <div>
         <%= f.submit '登録', class: 'input-btn' %>
       </div>

@@ -2,22 +2,26 @@
   <div class="row">
     <div class="main-content col-lg-9 col-md-9 col-9">
       <h2>タグ</h2>
+      <div class="tag-list">
         <% @tag_list.each do |list|%>
         <%=list.name %>
         <%="(#{list.memos.count})" %>
         <% end %>
-        <h2>メモ一覧</h2>
+      </div>
+      <h2>メモ一覧</h2>
+      <div class="memo-count">
         メモ<%= current_user.memos.where('created_at > ?', Date.new).count %>件
-        <div>
-          <% @memos.each do |memoall| %>
+      </div>
+      <div>
+        <% @memos.each do |memoall| %>
         <div class="main-content-list">
           <%= link_to memo_path(memoall.id) do %>
           <p><strong>タイトル</strong>　　<%= memoall.title %></p>
-          <p><strong>メモ</strong>　　<%= memoall.body %></p>
+          <p><strong>メモ</strong>　　　　<%= memoall.body %></p>
           <% end %>
         </div>
-         <% end %>
-         <%= paginate @memos %>
+        <% end %>
+        <%= paginate @memos %>
       </div>
     </div>
   </div>

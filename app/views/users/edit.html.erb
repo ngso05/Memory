@@ -3,12 +3,12 @@
     <div class="profile-update col-lg9 col-md9 col-9">
       <h2>マイページ編集</h2>
         <%= form_with model:@user, local:true do |f| %>
-        <div>
-          <label for="inputName">名前</label>
+        <div class="update-user-item">
+          <label for="inputName">名前:</label>
           <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
         </div>
-        <div>
-          <label for="inputEmail">メールアドレス</label>
+        <div class="update-user-item">
+          <label for="inputEmail">メールアドレス:</label>
           <%= f.email_field :email, autofocus: true, id:"inputEmail", placeholder:"メールアドレス"%>
         </div>
         <div>

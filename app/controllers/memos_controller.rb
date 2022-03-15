@@ -15,8 +15,8 @@ class MemosController < ApplicationController
     # 受け取った値を,で区切って配列にする
     tag_list=params[:memo][:name].split(',')
     if @memo.save
-      @memo.save_tag(tag_list)
-      redirect_to memos_path(@memo), notice: 'メモを作成しました'
+      @memo.save_memos(tag_list)
+      redirect_to memos_path(@memo)
     else
       flash.now[:alert] = 'メモの作成に失敗しました'
       render:new
@@ -34,18 +34,23 @@ class MemosController < ApplicationController
   end
 
   def update
-    @memo = Memo.find(params[:id])
-    tag_list=params[:memo][:name].split(',')
+    @memo = current_user.memos.find(params[:id])
+    tag_list = params[:memo][:name].split(',')
     if @memo.update(memo_params)
-       @memo.save_tag(tag_list)
-       redirect_to memo_path(@memo.id),notice:'投稿完了しました:)'
+      @memo.save_memos(tag_list)
+      redirect_to memos_path, success: '投稿を更新しました'
     else
-      render:edit
+      flash.now[:danger] = '投稿の更新に失敗しました'
+      render :edit
     end
   end
 
   def destroy
+    @memo = Memo.find(params[:id])
+    @memo.destroy
+    redirect_to memos_path
   end
+
   private
   def memo_params
     params.require(:memo).permit(:title, :body)
