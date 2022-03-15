@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="memo-detail-update-box col-lg-9 col-md-9 col-9">
+      <h2>メモを編集する</h2>
+      <%= form_with model: @memo, local: true do |f| %>
+      <div class="memo-detail-update-list">
+        <p>タイトル</p>
+        <%= f.text_field :title,  size: 40  %>
+      </div>
+      <div class="memo-detail-update-list">
+        <p>メモ</p>
+        <%= f.text_area :body, cols: 40 %>
+      </div>
+      <div class="memo-detail-update-list">
+        <p>タグ</p>
+        <%= f.text_field :name,  size: 40, value: @tag_list   %>
+      </div>
+      <% if @memo.user == current_user %>
+      <div class="edit-box">
+        <%= f.submit "変更を保存", class: "glyphicon glyphicon-pencil btn btn btn-info pull-right" %>
+        <% end %>
+        <%= link_to "削除する", memo_path(@memo), method: :delete, class: "glyphicon glyphicon-tint btn btn-danger"%>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

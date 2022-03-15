@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="profile col-lg9 col-md9 col-9">
+      <h2>マイページ</h2>
+      <div class="user-name">
+        <p>名前:       <%= @user.name %></p>
+      </div>
+      <div>
+        <% if @user.id == current_user.id %>
+        <p><%= link_to "編集する", edit_user_path(@user), class: "glyphicon glyphicon-pencil btn btn-primary pull-right" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
