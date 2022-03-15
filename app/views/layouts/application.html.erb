@@ -4,12 +4,43 @@
     <title>Memory</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
   </head>
 
   <body>
+    <header>
+      <%= link_to root_path, class:"header-title" do %>
+      <div class="heading">Memory</div>
+      <% end %>
+      <ul class="nav-list">
+        <% if user_signed_in? %>
+        <li class="nav-list-item">
+          <%#= link_to 'マイページ', user_path(current_user.id) %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to 'メモ一覧', memos_path %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to 'メモを作成する', new_memo_path %>
+        </li>
+        <% else %>
+        <li class="nav-list-item">
+          <%= link_to "新規登録", new_user_registration_path %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "ログイン", new_user_session_path %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to 'メモ一覧', memos_path %>
+        </li>
+        <% end %>
+      </ul>
+    </header>
     <%= yield %>
   </body>
 </html>
